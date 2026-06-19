@@ -5,20 +5,35 @@ Nolan terminal help a tool for fixing our worngs, let me explain about it, well 
 Very simple and easy without memory leaking! In yours terminal bashrc, it added this part of code:
 ```bash
 command_not_found_handle() {
-    python /usr/local/bin/nth/nth.py $1 $2 $3 $4
+    python /usr/local/bin/nth/nth.py "$@"
 }
 ```
 now somehow running python code, for more understanding please reading the code.
 and next step it is running by auto and closed
 
+### examples
+
+```bash
+# in default
+#~: la
+#No command la found, did you mean.....
+
+#by nth
+#~: la
+#do you this command is wrongs(y/n): y
+#Please write corecct command: ls
+#~: la
+# myfile2 myfile2
+```
+
 ### installing
-1. clone it
+1. clone it and install
 
-```git clone https://github.com/theNolanG/NolanTerminalHelp-NTH.git```
+```bash
+git clone https://github.com/theNolanG/NolanTerminalHelp-NTH.git
 
-2. install
-
-```python install.py```
+python install.py
+```
 
 #### Contributor
 all of yours can contributor in the project! and we can better than this and upgrades, yours pull request accepting. thank
