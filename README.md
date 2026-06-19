@@ -35,6 +35,10 @@ git clone https://github.com/theNolanG/NolanTerminalHelp-NTH.git
 python install.py
 ```
 
-#### Contributor
-all of yours can contributor in the project! and we can better than this and upgrades, yours pull request accepting. thank
+#### contributor
+yours can contributor in the project! and we can better than this and upgrades, yours pull request accepting. thank
+
+### License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
