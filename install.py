@@ -7,24 +7,27 @@ class NTH:
 
         self.bashRcCommand="""
 command_not_found_handle() {
-    python /usr/local/bin/nth/nth.py $1 $2 $3 $4
+    python /usr/local/bin/nth/nth.py "$@"
 }
             """
         self.way="/usr/local/bin/"
+        self.database={"expection":[],"bashrcbackup":""}
     def install(self):
         if not os.path.exists(self.way+"nth"):
             try:
                 os.mkdir(self.way+"nth")
                 print("created nth directory !")
+                self._bashrc()
+                print("added commands in bashrc file")
                 with open(self.way+"nth/"+"database.json","w") as file:
-                    json.dump({},file)
+                    json.dump(self.database,file)
                     print("created json database file !")
                     file.close()
                 os.system("cp nth.py "+self.way+"nth")
-                print("copy nth python file to be "+self.way)
-                self._bashrc()
-                print("added commands in bashrc file")
+                print("copy nth python file to be "+self.way+"nth")
                 print("Installed...")
+                os.system("unset -f command_not_found_handle")
+                print("Please run 'source .bashrc' in the user home\nReady for working.")
                 return True
             except Exception as e:
                 print(e)
@@ -36,6 +39,13 @@ command_not_found_handle() {
     def uninstall(self):
         try:
             if os.path.exists(self.way+"nth"):
+                with open(self.way+"nth/"+"database.json") as file:
+                    self.database=json.load(file)
+                    
+                bashrcpath=os.path.expanduser("~/.bashrc")
+                
+                with open(bashrcpath,"w") as file:
+                    file.write(str(self.database["bashrcbackup"]))
                 os.system("rm -rf "+self.way+"nth")
                 print("The Nth uninstalled !")
                 return True
@@ -47,9 +57,11 @@ command_not_found_handle() {
             return False
     def clear(self):
         os.system("clear")
-        returnb0
+        return 0
     def _bashrc(self):
         bashrcPath=os.path.expanduser("~/.bashrc")
+        with open(bashrcPath,"r") as file:
+            self.database["bashrcbackup"]=str(file.read())
         with open(bashrcPath,"a") as file:
             file.write("#Nolan terminal help")
             file.write(self.bashRcCommand)
@@ -59,7 +71,7 @@ command_not_found_handle() {
 if __name__ == "__main__":
     nth=NTH()
     print("Nolan Terminal Help")
-    print("1.Install\n2.Uninstall\n3.exit")
+    print("1.Install\n2.Uninstall\n3.Reinstall\n4.Exit")
     while True:
         answer=int(input("Enter number: "))
         if answer == 1:
@@ -71,8 +83,12 @@ if __name__ == "__main__":
             nth.uninstall()
             print("!! PLEASE MANUAL REMOVE PART CODE FROM BASHRC !!")
             break
-        else:
+        elif answer == 3:
             nth.clear()
-            sys.exit()
+            nth.uninstall()
+            nth.install()
+            break
+        else:
+            break
             
         

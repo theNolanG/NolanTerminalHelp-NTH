@@ -1,11 +1,11 @@
 ## Nolan Terminal Helper
-Nolan terminal help a tool for fixing our worngs, let me explain about it, well seeing you always in your terminal running bad command, for example `la,cleat,helm' all of them a mistake because maybe you fast type or some other thing but this is tool help to our! when we run a bad command so that showing us a error **No command a found, did you mean...** this is very bad and now NTH saying "do you think this commnd needing to be save? Yes/no" if you answer **yes** we went next step,  it is saying "write it correctly" and yours answer it and in the nexts time even writing wrong, tool somehow running by defaulty correct command! , and now else if what that our answer no? well simply it is commnd don't needing something and running default, just simply
+Nolan terminal help a tool for fixing our worngs, let me explain about it, well seeing you always in your terminal running bad command, for example `la,cleat,helm' all of them a mistake because maybe you fast type or some other thing but this is tool help to our! when we run a bad command so that showing us a error **No command a found, did you mean...** this is very bad and now NTH saying "do you think this commnd needing to be save? Yes/no" if you answer **yes** we went next step,  it is saying "write it correctly" and yours answer it and in the nexts time even writing wrong, tool somehow running by defaulty correct command! , and now else if what that our answer no? well simply it is commnd don't needing something and running default
 
 ### how it works
 Very simple and easy without memory leaking! In yours terminal bashrc, it added this part of code:
 ```bash
 command_not_found_handle() {
-    python /usr/local/bin/nth.py $1 $2 $3 $4
+    python /usr/local/bin/nth/nth.py $1 $2 $3 $4
 }
 ```
 now somehow running python code, for more understanding please reading the code.
