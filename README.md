@@ -26,6 +26,10 @@ and next step it is running by auto and closed
 # myfile2 myfile2
 ```
 
+### shortcuts
+Yes even shortcut, nth just not a correct command runner, it is can make that, you can create custom shortcuts.
+for use this you should be run a mistake command by custom name and in the part of correctly writing, write a bash script
+
 ### installing
 1. clone it and install
 
@@ -38,7 +42,7 @@ python install.py
 #### contributor
 yours can contributor in the project! and we can better than this and upgrades, yours pull request accepting. thank
 
-### License
+### license
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
